@@ -11,18 +11,14 @@ from io import BytesIO
 import pygame
 class JarvisAssistant:  
     def __init__(self):
-        genai.configure(api_key='AIzaSyAa4ygLGWZJaUKSubVdiQGhWS66Oc3sjQg')  # Replace with your actual API key
+        genai.configure(api_key='api-key')  # Replace with your actual API key
         self.model = genai.GenerativeModel('gemini-1.5-pro-002')
         self.recognizer = sr.Recognizer()
 
     def clean_text(self, text):
-        # Remove asterisks
         text = text.replace('*', '')
-        # Remove any markdown-style links
         text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
-        # Remove any remaining special characters or markdown syntax
         text = re.sub(r'[#_~`>]', '', text)
-        # Replace multiple newlines with a single one
         text = re.sub(r'\n+', '\n', text)
         return text.strip()
 
@@ -59,7 +55,7 @@ class JarvisAssistant:
         with sr.Microphone(device_index=2) as source:
             print("Listening...")
             self.speak_fast("Listening")
-            self.recognizer.adjust_for_ambient_noise(source, duration=1)  # Adjust duration if needed
+            self.recognizer.adjust_for_ambient_noise(source, duration=1)  
             audio = self.recognizer.listen(source, timeout=5, phrase_time_limit=5)
 
         try:
