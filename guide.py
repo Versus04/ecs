@@ -1,6 +1,4 @@
-# AIzaSyCTlVj4I6xzkpEyMaPZtP5JrpHae21I4Rc
 
-# pip install requests gtts pygame SpeechRecognition
 import sys
 import requests  # To handle HTTP requests
 from gtts import gTTS  # Google Text-to-Speech module
